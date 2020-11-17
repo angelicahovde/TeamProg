@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEAM 3</title>
+    <link href='https://fonts.googleapis.com/css?family=Fredericka the Great' rel' rel='stylesheet' rel='stylesheet'>
+    <style>
+
+        h1 {
+            text-align: center;
+            color:rgb(170, 19, 39);
+            font-family: 'Fredericka the Great';font-size: 35px;
+        }
+        h2 {
+            text-align: center;
+            font-family: 'Fredericka the Great';
+        }
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        #hoved {
+            margin: auto;
+            background-color: rgb(134, 60, 60);
+            display: grid;
+            width: 510px;
+            height: 527px;
+            padding: 2px;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-areas:  'box1 box2 box3' 
+                                  'box4 box5 box6'
+                                  'box7 box8 box9';
+        }
+        .boxer {
+            margin: 3px;
+            border: 1px solid rgb(255, 253, 253);
+        }
+        .bilde {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 0;    
+        }
+        #box1 {
+            grid-area: box1;
+            background-color: rgb(57, 99, 55);
+        }
+        #box2 {
+            grid-area: box2;
+            background-color: rgb(144, 49, 153);
+        }
+        #box3 {
+            grid-area: box3;
+            background-color: rgb(14, 133, 40);
+        }
+        #box4 {
+            grid-area: box4;
+            background-color: rgb(17, 61, 97);
+        }
+        #box5 {
+            grid-area: box5;
+            background-color: rgb(88, 132, 182);
+        }
+        #box6 {
+            grid-area: box6;
+            background-color: rgba(34, 9, 73, 0.719);
+        }
+        #box7 {
+            grid-area: box7;
+            background-color: rgb(245, 114, 8);
+        }
+        #box8 {
+            grid-area: box8;
+            background-color: rgb(187, 14, 14);
+        }
+        #box9 {
+            grid-area: box9;
+            background-color: rgb(131, 85, 15);
+        }
+        #hallo {
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="header"></h1>
+    <h2 id="hallo"></h2>
+    <div id="hoved">
+        <div id="box1" class="boxer" onclick=vis1() ></div>
+        <div id="box2" class="boxer" onclick=vis2() ></div>
+        <div id="box3" class="boxer" onclick=vis3() ></div>
+        <div id="box4" class="boxer" onclick=vis4() ></div>
+        <div id="box5" class="boxer" onclick=vis5() ></div>
+        <div id="box6" class="boxer" onclick=vis6() ></div>
+        <div id="box7" class="boxer" onclick=vis7() ></div>
+        <div id="box8" class="boxer" onclick=vis8() ></div>
+        <div id="box9" class="boxer" onclick=vis9() ></div>   
+    </div>
+    <script>
+
+        let click = 0;
+        let seier = 0;
+        let forsøk = 4;
+
+        tries()
+        function vis1() {
+            document.getElementById("box1").innerHTML = '<img src="https://cdn.discordapp.com/attachments/763413649107714048/768426368295108639/monkey_shocked.jpg" class="bilde" >'
+            click += 1;
+            forsøk -= 1;
+            tries();
+            tap();
+            var audio = new Audio('https://cdn.discordapp.com/attachments/763413649107714048/768798300752576532/monkey_2.mp3');
+            audio.play();
+            setTimeout("turnBack1()", 1500);
+        }
+        function vis2() {
+            document.getElementById("box2").innerHTML = '<img src="https://cdn.discordapp.com/attachments/763413649107714048/768440500197261322/The_Elephant.jpg" class="bilde" >'
+            click += 1;
+            forsøk -= 1;
+            tries();
+            seier += 1;
+            var audio = new Audio('https://cdn.discordapp.com/attachments/763413649107714048/768812998453755904/you_win.mp3');
+            audio.play();
+            tap();
+        }
+        function vis3() {
+            document.getElementById("box3").innerHTML = '<img src="https://cdn.discordapp.com/attachments/763413649107714048/768426351799042058/monkey_nose.jpg" class="bilde" >'
+            click += 1;
+            forsøk -= 1;
+            tries();
+            tap();
+            var audio = new Audio('https://cdn.discordapp.com/attachments/763413649107714048/768796920318918706/monkey_3.mp3');
+            audio.play();
+            setTimeout("turnBack3()", 1500);
+        }
+        function vis4() {
+            document.getElementById("box4").innerHTML = '<img src="https://cdn.discordapp.com/attachments/763413649107714048/768426369478426634/monkey_jackson.jpg" class="bilde" >'
+            click += 1;
+            forsøk -= 1;
+            tries();
+            tap();
+            var audio = new Audio('https://cdn.discordapp.com/attachments/763413649107714048/768802284695584791/monkey_4.mp3');
+            audio.play();
+            setTimeout("turnBack4()", 1500);
+        }
+        function vis5() {
+            document.getElementById("box5").innerHTML = '<img src="https://cdn.discordapp.com/attachments/763413649107714048/768434298495565824/image0.jpg" class="bilde" >'
+            click += 1;
+            forsøk -= 1;
+            tries();
+            tap();
+            var audio = new Audio('https://cdn.discordapp.com/attachments/763413649107714048/768799015214645308/monkey_1.mp3');
+            audio.play();
+            setTimeout("turnBack5()", 1500);
+        }
+        function vis6() {
+            document.getElementById("box6").innerHTML = '<img src="https://cdn.discordapp.com/attachments/763413649107714048/768425563538587668/monkey_akward_smile.jpg" class="bilde" >'
+            click += 1;
+            forsøk -= 1;
+            tries();
+            tap();
+            var audio = new Audio('https://cdn.discordapp.com/attachments/763413649107714048/768803735606263828/monkey_5.mp3');
+            audio.play();
+            setTimeout("turnBack6()", 1500);
+        }
+        function vis7() {
+            document.getElementById("box7").innerHTML = '<img src="https://cdn.discordapp.com/attachments/763413649107714048/768444969521905684/monkey_wet.jpg" class="bilde" >'
+            click += 1;
+            forsøk -= 1;
+            tries();
+            tap();
+            var audio = new Audio('https://cdn.discordapp.com/attachments/763413649107714048/768810995770064896/monkey_8.mp3');
+            audio.play();
+            setTimeout("turnBack7()", 1500);
+        }
+        function vis8() {
+            document.getElementById("box8").innerHTML = '<img src="https://cdn.discordapp.com/attachments/763413649107714048/768446353021599774/monkey_wise.jpg" class="bilde" >'
+            click += 1;
+            forsøk -= 1;
+            tries();
+            tap();
+            var audio = new Audio('https://cdn.discordapp.com/attachments/763413649107714048/768809842746982420/monkey_7.mp3');
+            audio.play();
+            setTimeout("turnBack8()", 1500);
+        }
+        function vis9() {
+            document.getElementById("box9").innerHTML = '<img src="https://cdn.discordapp.com/attachments/763413649107714048/768426363228782602/monkey_weird.jpg" class="bilde" >'
+            click += 1;
+            forsøk -= 1;
+            tries();
+            tap();
+            var audio = new Audio('https://cdn.discordapp.com/attachments/763413649107714048/768806704266608660/monkey_6.mp3');
+            audio.play();
+            setTimeout("turnBack9()", 1500);
+        }
+
+        function tap() {
+            if (click >= 4 && seier == 0) {
+                document.getElementById("hallo").innerHTML = "Du har brukt opp dine 4 forsøk. <br> LOOOOOOOOOOOOSER!!!"
+                setTimeout("location.reload()", 3000);
+                var audio = new Audio('https://cdn.discordapp.com/attachments/763413649107714048/768794414649835560/you_lose.mp3');
+                audio.play();
+            }
+            if (seier == 1) {
+                document.getElementById("hallo").innerHTML = "Gratulerer! Du fant elefanten!"
+            }
+        }
+        function turnBack1() {
+            document.getElementById("box1").innerHTML = "";
+        }
+        function turnBack2() {
+            document.getElementById("box2").innerHTML = "";
+        }
+        function turnBack3() {
+            document.getElementById("box3").innerHTML = "";
+        }
+        function turnBack4() {
+            document.getElementById("box4").innerHTML = "";
+        }
+        function turnBack5() {
+            document.getElementById("box5").innerHTML = "";
+        }
+        function turnBack6() {
+            document.getElementById("box6").innerHTML = "";
+        }
+        function turnBack7() {
+            document.getElementById("box7").innerHTML = "";
+        }
+        function turnBack8() {
+            document.getElementById("box8").innerHTML = "";
+        }
+        function turnBack9() {
+            document.getElementById("box9").innerHTML = "";
+        }
+        function tries() {
+            document.getElementById("header").innerHTML = "Kan du finne elefanten? <br> Du har " + forsøk + " forsøk igjen";
+        }
+
+    </script>
+</body>
+</html>
