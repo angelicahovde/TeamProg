@@ -1,0 +1,49 @@
+Morsekode konvertering
+
+konvertere tekst til morsekode. 
+konvertere morsekode til tekst? drøyer til slutt hvis vi har tid
+
+
+
+modell
+
+let tekst = ['a', 'b', 'c', 'd', 'e', ]     Liste med bokstaver 
+let morse = []     Liste med morsekode
+variabel for tekst input
+variabel for tekst output
+
+
+view - Krille
+
+input etc     
+viewUpdate()
+
+controller
+
+function
+sammenligne lister - Sindre og Angelica (foreloope & arrays)
+indexOf() -
+
+funksjon som setter input verdien til variabelen for tekst input - Mikael
+text to speach? (ferdig)
+
+
+
+
+
+
+...--...
+
+SMS
+const morseCodeArray =  [ '.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....',
+    '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.',
+    '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-',
+    '-.--', '--..', ' ', '·−·−', '−−−·', '·−−·−']; //4 siste er space, æ ,ø og å
+
+
+'.-' = a
+'-...' = b
+'-.-.' = c
+
+[a, b, c] a index 0 b 1 c 2
+['.-' (0), '-...'(1), '-.-.'(2)]

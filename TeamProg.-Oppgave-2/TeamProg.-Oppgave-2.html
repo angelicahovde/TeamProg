@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://fonts.googleapis.com/css?family=Eater' rel='stylesheet'>
+	<title>TEAM 3 - Spookey puzzle</title>
+<style>
+        
+    /* Forside start*/
+
+    body, html {
+         height: 100%;
+         margin: 0;
+        }
+
+        .backgroundImage {
+          background-image: url(https://ca-times.brightspotcdn.com/dims4/default/c264262/2147483647/strip/true/crop/1061x439+0+0/resize/840x348!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F0a%2F5c%2F7ca822db4d819d62912fdfff6dd6%2Fhalloween-cover.jpg);
+          height: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+
+        .startKnapp {
+          background-color: #d8980f;
+          color: black;
+          padding: 10px;
+          font-family: 'Eater';
+          font-size: 15px;
+          text-align: center;
+          border: none;
+          cursor: pointer;
+        }
+
+        .startKnapp {border-radius: 8px;}
+
+
+        .startKnapp {
+          display: inline-block;
+          position: absolute;
+          top: 42%;
+          left: 69%;
+        }
+
+        .startKnapp:hover {
+          background-color: #ffae00;
+        }
+
+        .dropdownKnapp {
+          background-color: #d8980f;
+          color: black;
+          padding: 10px;
+          font-family: 'Eater';
+          font-size: 15px;
+          text-align: center;
+          border: none;
+          cursor: pointer;
+        }
+
+        .dropdownKnapp {border-radius: 8px 8px 0px 0px;}
+        
+        .dropdown {
+          position: absolute;
+          display: inline-block;
+          top: 50%;
+          left: 65%;
+        }
+        
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #ffae00;
+          min-width: 180px;
+          z-index: 1;
+        }
+
+        .dropdown-content div {
+          color: black;
+          font-family: 'Eater';
+          font-size: 20px;
+          text-align: center;
+          display: block;
+          cursor: pointer;
+        }
+        
+        .dropdown-content div:hover {background-color: #d8980f}
+        
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+        
+        .dropdown:hover .dropdownKnapp {
+          background-color: #ffae00;
+        }
+
+    	/* Forside slutt*/
+
+
+		#page {
+            margin: 0;
+        }
+
+        #app {
+            margin: 0;
+            height: 100vh;
+            width: 100vw;
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            grid-template-rows: 1fr 1fr 2fr 2fr;
+            grid-template-areas: 'pictureFrame buttons'
+                                    'pictureFrame unsolved'
+                                    'pictureFrame unsolved'
+									'pictureFrame unsolved';
+        }
+        #pictureFrameDivGrid {
+            background-color: #13293e;
+            grid-area: pictureFrame;
+			padding: 5px;
+        }
+        #pictureFrame {
+            padding: 10px;
+        }
+        #buttonsAndInfo {
+            background-color: #13293e;
+            grid-area: buttons;
+        }
+        #unsolvedPiecesGrid {
+            background-color: #13293e;
+            grid-area: unsolved;
+			padding-top: 5px;
+			overflow: auto;
+        }
+		#pictureFrame div {
+			float: left;
+		}
+		#unsolvedPieces div {
+			float: left;
+			margin: 0px 2px;
+		}
+		#unsolvedPieces {
+			float: left;
+		}
+		#pictureSolved {
+			padding: 2px;
+		}
+		#check {
+			/* clear: left;*/
+			float: left;
+			position: relative;
+			background-color: orange;
+			width: 300px;
+			height: 100px;
+			text-align: center;
+			font-size: 25px;
+			margin-bottom: 2px;
+			font-family: 'Eater';
+			line-height: 100px;
+			margin: 5px;
+			border: 2px solid black;
+			border-radius: 8px;
+		}
+
+		#hint {
+			background-color: chocolate;
+			width: 200px;
+			height: 100px;
+			text-align: center;
+			font-size: 20px;
+			line-height: 100px;
+			position: relative;
+			z-index: 10;
+			font-family: 'Eater';
+			font-size: 30px;
+			float: left;
+			margin: 5px;
+			border: 2px solid black;
+			border-radius: 8px;
+		}
+		#preview {
+			z-index: 10;
+			border: 2px solid white;
+		}
+
+	</style>
+</head>
+
+	<!-- Forside start -->
+
+	<body id="page" onload="playMusicMenu();">
+	<div class="backgroundImage"></div>
+    
+        <button class="startKnapp" onclick="startGame()">START</button>
+
+        <div class="dropdown">
+        	<button class="dropdownKnapp">amount of pieces</button>
+        	<div class="dropdown-content"> 
+				<div class="valgDiv" onclick="chooseNumOfPictures(this)">9</div>
+				<div class="valgDiv" onclick="chooseNumOfPictures(this)">36</div>
+				<div class="valgDiv" onclick="chooseNumOfPictures(this)">144</div>
+				<div class="valgDiv" onclick="chooseNumOfPictures(this)">576</div>
+				<div class="valgDiv" onclick="chooseNumOfPictures(this)">2304</div>
+				<div class="valgDiv" onclick="chooseNumOfPictures(this)">9216</div>
+				<div class="valgDiv" onclick="chooseNumOfPictures(this)">36864</div>
+				<div class="valgDiv" onclick="chooseNumOfPictures(this)">360000</div>
+				<div class="valgDiv" >WARNING!</div>   
+        	</div>
+        </div>
+
+	<!-- Forside slutt -->
+
+	<script>
+
+		// Variabler
+		
+		let squareRootOfPictures = 3;
+		let numberOfPictures = squareRootOfPictures * squareRootOfPictures;
+		var image = new Image();
+		image.src = 'halloween_town.jpg';
+		image.width = 600;
+		image.height = 600;
+		numColsToCut = squareRootOfPictures;
+		numRowsToCut = squareRootOfPictures;
+		widthOfOnePiece = 600 / squareRootOfPictures;
+		heightOfOnePiece = 600 / squareRootOfPictures;
+		let pictureID = 1;
+		let pictureDivID = 1;
+		let frameDivID = 1;
+		let riktigEllerFeil = '';
+
+		// Funksjon som deler opp bildet
+		function cutImageUp() {
+			var imagePieces = [];
+			for (var x = 0; x < numColsToCut; ++x) {
+				for (var y = 0; y < numRowsToCut; ++y) {
+					var canvas = document.createElement('canvas');
+					canvas.width = widthOfOnePiece;
+					canvas.height = heightOfOnePiece;
+					var context = canvas.getContext('2d');
+					context.drawImage(image, x * widthOfOnePiece, y * heightOfOnePiece, widthOfOnePiece, heightOfOnePiece, 0, 0, canvas.width, canvas.height);
+					imagePieces.push(canvas.toDataURL());
+					document.getElementById("unsolvedPieces").innerHTML +=
+					`<div id="pictureDiv${pictureDivID}"><img draggable="true" ondragstart="drag(event)" id="img${pictureID}"></div>`;
+					var anImageElement = document.getElementById('img' + pictureID);
+					anImageElement.src = imagePieces[pictureID - 1];
+					pictureID += 1;
+					pictureDivID += 1;
+				}
+			}
+		}
+		// Funksjon som lager plass der bildene skal plasseres
+		function placeForImagePieces() {
+			let html = '';
+            let clear = '';
+            let divOrder = 0;
+			for (var k = 0; k < numberOfPictures; k++) {
+				divOrder == 0 ? clear = 'clear: left;' : clear = ''
+				html +=
+					`<div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" id="frameDiv${(divOrder*squareRootOfPictures)+frameDivID}"
+                    style="${clear}
+                    background-color: #188977;
+                    margin: 2px;
+                    width: ${widthOfOnePiece}px; 
+                    height: ${heightOfOnePiece}px"></div>
+                `;
+                if (divOrder == squareRootOfPictures - 1) {
+                    divOrder = 0;	
+                    frameDivID += 1;
+                }
+                else {
+                	divOrder += 1;
+                }
+			}
+			document.getElementById("pictureFrame").innerHTML = html
+		}
+		
+
+		// Funksjon som sjekker om bitene er på rett plass
+		function checkMatch() {
+            for (let n = 1; n <= numberOfPictures; n++) {
+                let myDiv = document.getElementById('frameDiv' + n);
+                let myImg = myDiv.getElementsByTagName('img')[0];
+				if (myImg.id != 'img' + n) riktigEllerFeil = 0;
+					else riktigEllerFeil = 1;
+			}
+            
+
+			// kan variere hvordan det ser ut om du har fullført eller ikke.
+
+			if (riktigEllerFeil == 1) {
+
+			document.getElementById("check").innerHTML =
+			'Correct! Well Done!' 
+			}
+			else {
+			document.getElementById("check").innerHTML = 'Something is Wrong'
+			setTimeout(setCheckButtonBack, 3000);
+			}
+    	}
+
+		function setCheckButtonBack() {
+			document.getElementById("check").innerHTML = 'Check if Correct';
+		}
+
+
+		// Funksjon for Drag&Drop
+        let offset = [0, 0]
+
+        function allowDrop(ev) {
+            var t = ev.target;
+            while (t !== null && !t.classList.contains("dropzone")) {
+                t = t.parentNode;
+            }
+            if (t && t.childNodes.length > 0) {
+                return false;
+            }
+            ev.preventDefault()
+        }
+
+        function drag(ev) {
+			playDrag()
+            ev.dataTransfer.setData('dragId', ev.target.id)
+            offset = [
+                ev.target.offsetLeft - ev.clientX,
+                ev.target.offsetTop - ev.clientY
+            ]
+        }
+
+        function drop(ev) {
+			playDrop()
+            ev.preventDefault()
+            const data = ev.dataTransfer.getData('dragId')
+            ev.target.appendChild(document.getElementById(data))
+        }
+
+		// Funksjon som starter spillet
+		function startGame() {
+			let page ='';
+            page = `<div id="app">
+					<div id="buttonsAndInfo">
+					<div id="hint" onmouseover="showHint(this)" onmouseout="dontShowHint(this)">Hint</div>
+					<div id="check" onclick="checkMatch()">Check if Correct</div>
+                    </div>
+                    <div id="pictureFrameDivGrid">
+					<div id="pictureFrame"></div>
+					<div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: ${widthOfOnePiece}px; height: ${heightOfOnePiece}px; 			background-color: #11545a; display: flex; align-items: center; 			margin:20px;"></div>
+                    </div>
+                    <div id="unsolvedPiecesGrid">
+                    <div id="unsolvedPieces"></div>
+                    </div>
+                    </div>`;
+					document.getElementById("page").innerHTML = page;
+					placeForImagePieces();
+					cutImageUp();
+					stopMusicMenu();
+                    playMusicGame();	
+		}
+
+		// Funksjon som setter valg av antall bildebiter til variablen numberOfPictures
+		function chooseNumOfPictures(antallBildeBiter) {
+			let numberOfPicturesTemporary = antallBildeBiter.innerHTML;
+			numberOfPicturesTemporary = parseInt(numberOfPicturesTemporary);
+			squareRootOfPictures = Math.sqrt(numberOfPicturesTemporary);
+
+			numColsToCut = squareRootOfPictures;
+			numRowsToCut = squareRootOfPictures;
+			widthOfOnePiece = 600 / squareRootOfPictures;
+			heightOfOnePiece = 600 / squareRootOfPictures;
+			numberOfPictures = squareRootOfPictures * squareRootOfPictures;
+			
+		}
+
+    // Funksjon som viser fram hint bildet
+		function showHint(denne) {
+			denne.innerHTML = '<img id ="preview" src="halloween_town.jpg" style="width: 500px; height: 500px;"></img>';
+		}
+		function dontShowHint(denne) {
+			denne.innerHTML = 'Hint';
+		}
+
+		function playMusicMenu() {
+        	MusicMenu = new Audio('menu.mp3');
+        	MusicMenu.volume = 0.2;
+        	MusicMenu.play();
+        }
+
+        function stopMusicMenu() {
+            
+            MusicMenu.pause();
+            MusicMenu.currentTime = 0;
+        }
+
+        function playMusicGame() {
+            MusicGame = new Audio('puzzle.mp3');
+            MusicGame.volume = 0.2;
+            MusicGame.loop = true;
+            MusicGame.play();
+        }
+
+        function playDrop() {
+            SoundDrop = new Audio('drop.wav');
+            SoundDrop.volume = 0.2;
+            SoundDrop.play();
+        }
+
+        function playDrag() {
+            SoundDrag = new Audio('drag.wav');
+            SoundDrag.volume = 0.2;
+            SoundDrag.play();
+		}
+		
+
+	</script>
+</body>
+</html>

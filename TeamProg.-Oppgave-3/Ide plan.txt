@@ -1,0 +1,155 @@
+Ide liste; 
+
+x antall ord - nye ord per valg. 
+Velger ord før du ser historie.  
+Når historien vises, vises også hvilke ord man han valgt. 
+Barnslige, grove, nøytrale, morsomme ord. 
+Finne på noe nytt eller inspirasjon fra eventyr? 
+Side 1 - Valg av ord
+Side 2 - Historie fortelling - bakgrunn musikk
+
+
+Historie; 
+
+Det var en gang (ord1- en apekatt), som het (ord2- Gunnar) med (ord3- store) (ord4-nøtter) 
+som skulle (ord5- reise) til (ord6- fest) som (ord2- Gunnar) ble invitert til av (ord7-Turid).
+(Ord7-Turid) hadde en intensjon på å få (ord2-Gunnar) sine (ord4-nøtter).
+
+På vei til (ord6-fest) så (ord7- gikk) (ord2- Gunnar) gjennom (ord8- en park) der (ord2- Gunnar) 
+møtte på (ord9-en hindring) som gjorde at (ord2- Gunnar) (ord10- falt) ned i (ord11- en fontene).
+Vannet i (ord11-fontenen) var veldig (ord12-kaldt), som gjorde at (ord2-Gunnar) sine (ord4nøtter) ble (ord13-til rosiner).
+(Ord 2 - Gunnar) ble veldig (14ord-lei seg) fordi (ord2-gunnar) trodde (Ord7-Turid) skulle bli (Ord 15-sint).
+Når (Ord2-Gunnar) kom frem til (Ord6-fest) viste det seg at (Ord7-Turid) ble (Ord 16- glad) fordi (ord7 -Turid) 
+(ord17-likte) (ord13-rosiner). 
+
+
+ordvalg1:
+    et dovendyr
+    en zombie
+    en prinsesse
+    et monster
+    en skilpadde
+    en robot
+
+ordvalg2: (Navn)
+    Mark
+    Donald
+    Stephen
+    George
+    Herman
+
+ordvalg3:
+    blå
+    store
+    rynkete
+    skittene
+    seige
+    hårete  
+
+ordvalg4:
+    nøtter
+    druer
+    meloner
+    tennisballer
+    juveler
+
+
+ordvalg5:
+    reise
+    gå
+    sykle
+    løpe
+    ri 
+
+
+ordvalg6:
+    fest
+    butikken
+    7/11
+    jobb
+    månen
+    Bangladesh
+
+Ordvalg7: (Navn)
+    Terje
+    Joakim
+    Therese
+    Linn
+    Anita
+
+ordvalg8: 
+    parken
+    kjøpesenteret
+    bakgaten
+    kloakken
+
+ord9:
+    en hindring
+    en utfordring
+    en situasjon
+    mafiaen
+    mattilsynet
+    flashmob
+    skattevesenet
+    en krokodille
+
+ord10:
+    falt
+    tryna
+    snubla
+    stupte
+    hoppet
+    rulla
+
+ord11:
+    en fontene
+    ei brønn
+    en innsjø
+    et komlukk
+    en sølepytt
+    en portal
+    
+ordvalg12:
+    kaldt
+    skittent
+    varmt
+    guffent
+    slimete
+    klamt
+
+ordvalg13:
+    til rosiner
+    stygge
+    mugne
+    oppblåst
+    mutert
+    
+ordvalg14:
+    lei seg
+    skuffa
+    ekstatisk
+    opgitt
+    deprimert
+
+ordvalg15: 
+    sint
+    glad
+    overrasket
+    redd
+    i ekstase
+
+ordvalg16:
+    glad
+    sint
+    overrasket
+    redd
+    i ekstase
+
+ordvalg17: 
+    likte
+    hatet
+    likte ikke
+    hadde lyst på
+    elsket
+    hadde ikke lyst på
+

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=ZCOOL KuaiLe' rel='stylesheet'>
+    <title>Battle Of The Elements</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("https://media.discordapp.net/attachments/770283643884797963/776802495842222120/cartoon-small-wooden-bridge-woods_43633-7352.png?width=607&height=468");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 70%;
+            /* background-color: rgb(37, 140, 158); */
+            background-color: #fff;
+
+        }
+        .element {
+            display: inline-block;
+            margin: 25px 5px;
+            width: 75px;
+            height: 40px;
+            text-align: center;
+            padding-top: 10px;
+            font-family: 'ZCOOL KuaiLe';
+            font-size: 15px;
+            text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+        }
+        #valgPage {
+            height: 100vh;
+            width: 100vw;
+            display: grid;
+            grid-template-rows: 2fr 1fr;
+        }
+        #buttonsGrid {
+            margin-left: 15%;
+            margin-right: 15%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            
+        }
+        #informationGrid {
+            background-image: url(battleoftheelements.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 885px;
+            background-position: 48% 5%;
+        }
+        #resultPage {
+            display: flex;
+            width: 100vw;
+        }
+        #vinnerPage {
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+        }
+        #app {
+            width: 100vw;
+            height: 100vh;
+        }
+        #inner {
+            width: 80%;
+            text-align: center;
+
+        }
+        #inner > div{
+            display: inline-block;
+        }
+        #VS {
+            font-family: 'ZCOOL KuaiLe';
+            font-size: 100px;
+            text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+        }
+        #resultat {
+            font-family: 'ZCOOL KuaiLe';
+            font-size: 100px;
+            text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+        }
+
+        #scoreMinigameContainer {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 20px;
+        }
+        #miniGame {
+            float: right;
+            margin: 10px 20px 0 0;
+        }
+        #score {
+            margin: 10px 0 20px 20px;
+
+        }
+        .whichPlayer {
+            font-family: 'ZCOOL KuaiLe';
+            font-size: xx-large;
+            text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="app"></div>
+
+
+
+    <script>
+
+        // Model
+
+        // Linn sin minigame
+        let playerScore = 0;
+        let computerScore = 0;
+        // Linn sin minigame slutt
+
+        let scoreSpiller = 0;
+        let scoreCpu = 0;
+        let uavgjort = 0;
+        let antallRunder = 0;
+
+        let contentVal = 0;
+
+        let valgSpiller = '';
+        let valgCpu = '';
+
+        let normalWinsAgainst = [];
+        let fireWinsAgainst = [4, 5, 11, 16, 17];
+        let waterWinsAgainst = [1, 8, 12, 5, 16];
+        let electricWinsAgainst = [2, 9, 16];
+        let grassWinsAgainst = [2, 8, 12, 3];
+        let iceWinsAgainst = [4, 8, 9, 14];
+        let fightingWinsAgainst = [0, 5, 12, 15, 16];
+        let poisonWinsAgainst = [4, 17, 11, 6];
+        let groundWinsAgainst = [1, 3, 7, 12, 16];
+        let flyingWinsAgainst = [4, 6, 11, 8];
+        let psychicWinsAgainst = [6, 7];
+        let bugWinsAgainst = [4, 10, 15, 8];
+        let rockWinsAgainst = [1, 5, 9, 11, 0, 7];
+        let ghostWinsAgainst = [10, 6, 7, 11];
+        let dragonWinsAgainst = [1, 2, 3, 4];
+        let darkWinsAgainst = [10, 13];
+        let steelWinsAgainst = [5, 12, 17, 0, 4, 7, 9, 10, 11, 14];
+        let fairyWinsAgainst = [6, 14, 15, 11];
+
+        let spillerArray;
+        let computerArray;
+
+        let imgArray = ['<img src="normal.png">', '<img src="fire.png">',
+                        '<img src="water.png">', '<img src="electric.png">',
+                        '<img src="grass.png">', '<img src="ice.png">',
+                        '<img src="fighting.png">', '<img src="poison.png">',
+                        '<img src="ground.png">', '<img src="flying.png">',
+                        '<img src="psychic.png">', '<img src="bug.png">',
+                        '<img src="rock.png">', '<img src="ghost.png">',
+                        '<img src="dragon.png">', '<img src="dark.png">',
+                        '<img src="steel.png">', '<img src="fairy.png">']
+        let playerElementChoicePicture = '<img src="grass.png">';
+        let cpuElementChoicePicture = '<img src="steel.png">';
+
+        let resultat = ''
+
+
+        // Html for siden der man velger hvilket element
+        let valgHtml;
+        // Html for siden der vinner blir vist
+        let vinnerHtml;
+
+        // View
+        updateView();
+        function updateView() {
+            vinnerHtml =`<div id="resultPage">
+                        <div id="scoreMinigameContainer">
+                        <div id="score">Player score: ${scoreSpiller}<br> Computer score: ${scoreCpu} <br> Number of ties: ${uavgjort} <br>Rounds played ${antallRunder} </div>
+                        
+                        <div id="miniGame">Linns Minigame <br>Your Score: ${playerScore} </br>
+                            ComputerScore: ${computerScore}<br>
+                            <button onclick="playLinnGame()">Play</button>
+                        </div></div></div>
+                        <div id="vinnerPage">
+                        <div id="inner">
+                        <div id="playerSide" class="whichPlayer">Players choice
+                        <div id="playerElementPicture">${playerElementChoicePicture}</div>
+                        </div><div id="VS">VS</div>
+                        <div id="cpuSide" class="whichPlayer">Computers choice
+                        <div id="cpuElementPicture">${cpuElementChoicePicture}</div>
+                        </div><br>
+                        <div id="resultat">${resultat}</div>
+                        </div>
+                        </div>
+                        </div>`;
+
+            valgHtml  = `<div id="valgPage">
+                        <div id="informationGrid">
+                        <div id="scoreMinigameContainer">
+                        <div id="score">Player score: ${scoreSpiller}<br> Computer score: ${scoreCpu} <br> Number of ties: ${uavgjort} <br>Rounds played ${antallRunder} </div>
+                        <div id="miniGame">Linns Minigame <br>Your Score: ${playerScore} </br>
+                            ComputerScore: ${computerScore} </br>
+                            <button onclick="playLinnGame()">Play</button>
+                        </div>
+                        </div>
+                        </div>
+                        <div id="buttonsGrid">
+                        <div class="element" onclick="playerChoice(0)"><img src="normal.png" width="60" higth="60">NORMAL</div>
+                        <div class="element" onclick="playerChoice(1)"><img src="fire.png" width="60" higth="60">FIRE</div>
+                        <div class="element" onclick="playerChoice(2)"><img src="water.png" width="60" hight="60">WATER</div>
+                        <div class="element" onclick="playerChoice(3)"><img src="electric.png" width="60" hight="60">ELECTRIC</div>
+                        <div class="element" onclick="playerChoice(4)"><img src="grass.png" width="60" hight="60">GRASS</div>
+                        <div class="element" onclick="playerChoice(5)"><img src="ice.png" width="60" hight="60">ICE</div>
+                        <div class="element" onclick="playerChoice(6)"><img src="fighting.png" width="60" hight="60">FIGHTING</div>
+                        <div class="element" onclick="playerChoice(7)"><img src="poison.png" width="60" hight="60">POISON</div>
+                        <div class="element" onclick="playerChoice(8)"><img src="ground.png" width="60" hight="60">GROUND</div>
+                        <div id="clearElement" class="element" onclick="playerChoice(9)"><img src="flying.png" width="60" hight="60">FLYING</div>
+                        <div class="element" onclick="playerChoice(10)"><img src="psychic.png" width="60" hight="60">PSYCHIC</div>
+                        <div class="element" onclick="playerChoice(11)"><img src="bug.png" width="60" hight="60">BUG</div>
+                        <div class="element" onclick="playerChoice(12)"><img src="rock.png" width="60" hight="60">ROCK</div>
+                        <div class="element" onclick="playerChoice(13)"><img src="ghost.png" width="60" hight="60">GHOST</div>
+                        <div class="element" onclick="playerChoice(14)"><img src="dragon.png" width="60" hight="60">DRAGON</div>
+                        <div class="element" onclick="playerChoice(15)"><img src="dark.png" width="60" hight="60">DARK</div>
+                        <div class="element" onclick="playerChoice(16)"><img src="steel.png" width="60" hight="60">STEEL</div>
+                        <div class="element" onclick="playerChoice(17)"><img src="fairy.png" width="60" hight="60">FAIRY</div>
+                        </div>
+                        </div>`;
+            contentVal == 0 ? content = valgHtml : content = vinnerHtml;
+
+            document.getElementById("app").innerHTML = content;
+        }
+
+
+        // Controller
+
+        function cpuChoice(){
+            valgCpu = Math.floor(Math.random() * 18);
+        }
+
+        function playLinnGame(){
+            let random = Math.floor(Math.random()*2);
+
+            if(random < 1){playerScore++;}
+            else {computerScore++;}
+
+            updateView();
+        }
+        function playerChoice(nr) {
+            valgSpiller = nr;
+            contentVal = 1;
+            cpuChoice();
+            playerElementChoicePicture = imgArray[valgSpiller];
+            cpuElementChoicePicture = imgArray[valgCpu];
+            checkWinner();
+            updateView();
+            setTimeout("gameReset()", 4000);
+        }
+
+        function choosenArray() {
+            if (valgCpu == 0) { computerArray = normalWinsAgainst;}
+            if (valgCpu == 1) { computerArray = fireWinsAgainst;}
+            if (valgCpu == 2) { computerArray = waterWinsAgainst;}
+            if (valgCpu == 3) { computerArray = electricWinsAgainst;}
+            if (valgCpu == 4) { computerArray = grassWinsAgainst;}
+            if (valgCpu == 5) { computerArray = iceWinsAgainst;}
+            if (valgCpu == 6) { computerArray = fightingWinsAgainst;}
+            if (valgCpu == 7) { computerArray = poisonWinsAgainst;}
+            if (valgCpu == 8) { computerArray = groundWinsAgainst;}
+            if (valgCpu == 9) { computerArray = flyingWinsAgainst;}
+            if (valgCpu == 10) { computerArray = psychicWinsAgainst;}
+            if (valgCpu == 11) { computerArray = bugWinsAgainst;}
+            if (valgCpu == 12) { computerArray = rockWinsAgainst;}
+            if (valgCpu == 13) { computerArray = ghostWinsAgainst;}
+            if (valgCpu == 14) { computerArray = dragonWinsAgainst;}
+            if (valgCpu == 15) { computerArray = darkWinsAgainst;}
+            if (valgCpu == 16) { computerArray = steelWinsAgainst;}
+            if (valgCpu == 17) { computerArray = fairyWinsAgainst;}
+
+            if (valgSpiller == 0) { spillerArray = normalWinsAgainst;}
+            if (valgSpiller == 1) { spillerArray = fireWinsAgainst;}
+            if (valgSpiller == 2) { spillerArray = waterWinsAgainst;}
+            if (valgSpiller == 3) { spillerArray = electricWinsAgainst;}
+            if (valgSpiller == 4) { spillerArray = grassWinsAgainst;}
+            if (valgSpiller == 5) { spillerArray = iceWinsAgainst;}
+            if (valgSpiller == 6) { spillerArray = fightingWinsAgainst;}
+            if (valgSpiller == 7) { spillerArray = poisonWinsAgainst;}
+            if (valgSpiller == 8) { spillerArray = groundWinsAgainst;}
+            if (valgSpiller == 9) { spillerArray = flyingWinsAgainst;}
+            if (valgSpiller == 10) { spillerArray = psychicWinsAgainst;}
+            if (valgSpiller == 11) { spillerArray = bugWinsAgainst;}
+            if (valgSpiller == 12) { spillerArray = rockWinsAgainst;}
+            if (valgSpiller == 13) { spillerArray = ghostWinsAgainst;}
+            if (valgSpiller == 14) { spillerArray = dragonWinsAgainst;}
+            if (valgSpiller == 15) { spillerArray = darkWinsAgainst;}
+            if (valgSpiller == 16) { spillerArray = steelWinsAgainst;}
+            if (valgSpiller == 17) { spillerArray = fairyWinsAgainst;}
+        }
+        
+        function checkWinner() {
+            choosenArray();
+            antallRunder += 1;
+            if (spillerArray.includes(valgCpu)) {
+                scoreSpiller += 1;
+               return resultat = 'Player Wins!';
+            }
+            else if (computerArray.includes(valgSpiller)) {
+                scoreCpu += 1;
+                return resultat = 'Computer Wins!'; 
+            }
+            else {
+                uavgjort += 1;
+                return resultat = "It's a Tie!";
+            } 
+        }
+
+        function setPicture() {
+            playerElementChoicePicture = imgArray[valgSpiller];
+            cpuElementChoicePicture = imgArray[valgCpu];
+        }
+
+        function gameReset() {
+            valgSpiller = '';
+            valgCpu = '';
+            contentVal = 0;
+            updateView();
+        }
+
+    </script>
+
+</body>
+</html>

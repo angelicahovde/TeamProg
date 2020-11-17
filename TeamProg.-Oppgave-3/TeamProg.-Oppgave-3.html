@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Finger Paint' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEAM 3 - HISTORIE</title>
+    <style>
+
+        #trykkPåMeg { 
+            background-color: #50d161; 
+            border: 3px solid #1f8630; 
+            padding: 10px; 
+            text-align: center;
+            position: fixed;
+            top: 40%;
+            left: 37%;
+        } 
+
+        div {
+            background-color: #1f8630;
+            margin: 10px;
+            font-family: 'Finger paint';
+            padding: 10px;
+            float: left;
+            border-radius: 25%;
+        }
+        div.clear {
+            clear: left;
+        }
+        
+    </style>
+</head>
+<body id="app">
+    
+    <script>    
+    
+    // Model - Variabler med ting som kan variere.
+    let content = `<div id="trykkPåMeg" onclick="visOrdvalg()">Trykk på meg så begynner vi</div>`;
+    let ordvalg1;
+    let ordvalg2;
+    let ordvalg3;
+    let ordvalg4;
+    let ordvalg5;
+    let ordvalg6;
+    let ordvalg7;
+    let ordvalg8;
+    let ordvalg9;
+    let ordvalg10;
+    let ordvalg11;
+    let ordvalg12;
+    let ordvalg13;
+    let ordvalg14;
+    let ordvalg15;
+    let ordvalg16;
+    let ordvalg17;
+    let ordvalg18;
+    let historie;
+    let visHistorie;
+    let ord1 = '';
+    let ord2 = '';
+    let ord3 = '';
+    let ord4 = '';
+    let ord5 = '';
+    let ord6 = '';
+    let ord7 = '';
+    let ord8 = '';
+    let ord9 = '';
+    let ord10 = '';
+    let ord11 = '';
+    let ord12 = '';
+    let ord13 = '';
+    let ord14 = '';
+    let ord15 = '';
+    let ord16 = '';
+    let ord17 = '';
+    let ord18 = '';
+    
+
+
+    // View - Det som vises på siden.
+    function show() { 
+        // Dette er det som vises når siden lastes
+        
+        
+
+        ordvalg1 = `<div onclick="førsteOrd(this)">et dovendyr</div>
+                    <div onclick="førsteOrd(this)">et monster</div>
+                    <div class="clear" onclick="førsteOrd(this)">en prinsesse</div>
+                    <div onclick="førsteOrd(this)">en skilpadde</div>
+                    <div class="clear" onclick="førsteOrd(this)">en zombie</div>
+                    <div onclick="førsteOrd(this)">en robot</div>`;
+
+        ordvalg2 = `<div onclick="andreOrd(this)">Mark</div>
+                    <div onclick="andreOrd(this)">Donald</div>
+                    <div onclick="andreOrd(this)">Herman</div>
+                    <div class="clear" onclick="andreOrd(this)">George</div>
+                    <div onclick="andreOrd(this)">Stephen</div>`;
+
+        ordvalg3 = `<div onclick="tredjeOrd(this)">blå</div>
+                    <div onclick="tredjeOrd(this)">store</div>
+                    <div class="clear" onclick="tredjeOrd(this)">rynkete</div>
+                    <div onclick="tredjeOrd(this)">skittene</div>
+                    <div class="clear" onclick="tredjeOrd(this)">seige</div>
+                    <div onclick="tredjeOrd(this)">hårete</div>`;
+
+        ordvalg4 = `<div onclick="fjerdeOrd(this)">nøtter</div>
+                    <div onclick="fjerdeOrd(this)">druer</div>
+                    <div onclick="fjerdeOrd(this)">meloner</div>
+                    <div class="clear" onclick="fjerdeOrd(this)">tennisballer</div>
+                    <div onclick="fjerdeOrd(this)">juveler</div>`;
+
+        ordvalg5 = `<div onclick="femteOrd(this)">reise</div>
+                    <div onclick="femteOrd(this)">gå</div>
+                    <div onclick="femteOrd(this)">sykle</div>
+                    <div class="clear" onclick="femteOrd(this)">løpe</div>
+                    <div onclick="femteOrd(this)">ri</div>`;
+
+        ordvalg6 = `<div onclick="sjetteOrd(this)">fest</div>
+                    <div onclick="sjetteOrd(this)">butikken</div>
+                    <div class="clear" onclick="sjetteOrd(this)">7/11</div>
+                    <div onclick="sjetteOrd(this)">jobb</div>
+                    <div class="clear" onclick="sjetteOrd(this)">månen</div>
+                    <div onclick="sjetteOrd(this)">Bangladesh</div>`;
+
+        ordvalg7 = `<div onclick="syvendeOrd(this)">Terje</div>
+                    <div onclick="syvendeOrd(this)">Joakim</div>
+                    <div onclick="syvendeOrd(this)">Linn</div>
+                    <div class="clear" onclick="syvendeOrd(this)">Anita</div>
+                    <div onclick="syvendeOrd(this)">Therese</div>`;
+
+        ordvalg8 = `<div onclick="åttendeOrd(this)">kloakken</div>
+                    <div onclick="åttendeOrd(this)">kjøpesenteret</div>
+                    <div class="clear" onclick="åttendeOrd(this)">bakgaten</div>
+                    <div onclick="åttendeOrd(this)">parken</div>`;
+
+        ordvalg9 = `<div onclick="niendeOrd(this)">en hindring</div>
+                    <div onclick="niendeOrd(this)">mafiaen</div>
+                    <div class="clear" onclick="niendeOrd(this)">flashmob</div>
+                    <div onclick="niendeOrd(this)">mattilsynet</div>
+                    <div class="clear" onclick="niendeOrd(this)">skattevesenet</div>
+                    <div onclick="niendeOrd(this)">en sitvasjon</div>
+                    <div class="clear" onclick="niendeOrd(this)">en krokodille</div>
+                    <div onclick="niendeOrd(this)">en utfordring</div>`;
+                    
+        ordvalg10 =`<div onclick="tiendeOrd(this)">falt</div>    
+                    <div onclick="tiendeOrd(this)">tryna</div>
+                    <div class="clear" onclick="tiendeOrd(this)">snubla</div>
+                    <div onclick="tiendeOrd(this)">stupte</div>
+                    <div class="clear" onclick="tiendeOrd(this)">hoppet</div>
+                    <div onclick="tiendeOrd(this)">rulla</div>`;
+                        
+        ordvalg11 =`<div onclick="elefteOrd(this)">en fontene</div>
+                    <div onclick="elefteOrd(this)">en innsjø</div>
+                    <div class="clear" onclick="elefteOrd(this)">ei brønn</div>
+                    <div onclick="elefteOrd(this)">et komlukk</div>
+                    <div class="clear" onclick="elefteOrd(this)">en sølepytt</div>
+                    <div onclick="elefteOrd(this)">en portal</div>`;
+                        
+        ordvalg12 =`<div onclick="tolvteOrd(this)">kaldt</div>
+                    <div onclick="tolvteOrd(this)">skittent</div>                    
+                    <div class="clear" onclick="tolvteOrd(this)">varmt</div>
+                    <div onclick="tolvteOrd(this)">guffent</div>
+                    <div class="clear" onclick="tolvteOrd(this)">slimete</div>
+                    <div onclick="tolvteOrd(this)">klamt</div>`;
+
+        ordvalg13 =`<div onclick="trettendeOrd(this)">smale</div>
+                    <div onclick="trettendeOrd(this)">stygge</div>
+                    <div onclick="trettendeOrd(this)">mugne</div>
+                    <div class="clear" onclick="trettendeOrd(this)">oppblåste</div>
+                    <div onclick="trettendeOrd(this)">muterte</div>`;
+
+        ordvalg14 =`<div onclick="fjortendeOrd(this)">lei seg</div>
+                    <div onclick="fjortendeOrd(this)">skuffa</div>
+                    <div onclick="fjortendeOrd(this)">ekstatisk</div>
+                    <div class="clear" onclick="fjortendeOrd(this)">oppgitt</div>
+                    <div onclick="fjortendeOrd(this)">deprimert</div>`;
+
+        ordvalg15 =`<div onclick="femtendeOrd(this)">glad</div>
+                    <div onclick="femtendeOrd(this)">sint</div>
+                    <div onclick="femtendeOrd(this)">overrasket</div>
+                    <div class="clear" onclick="femtendeOrd(this)">redd</div>
+                    <div onclick="femtendeOrd(this)">i ekstase</div>`;
+
+        ordvalg16 =`<div onclick="sekstendeOrd(this)">fornøyd</div>
+                    <div onclick="sekstendeOrd(this)">hissig</div>
+                    <div onclick="sekstendeOrd(this)">i ekstase</div>
+                    <div class="clear" onclick="sekstendeOrd(this)">overrasket</div>
+                    <div onclick="sekstendeOrd(this)">skeptisk</div>`;
+
+        ordvalg17 =`<div onclick="søttendeOrd(this)">likte</div>
+                    <div onclick="søttendeOrd(this)">hatet</div>
+                    <div class="clear" onclick="søttendeOrd(this)">likte ikke</div>
+                    <div onclick="søttendeOrd(this)">hadde lyst på</div>
+                    <div class="clear" onclick="søttendeOrd(this)">hadde ikke lyst på</div>
+                    <div onclick="søttendeOrd(this)">elsket</div>`;
+
+        ordvalg18 =`<div onclick="attendeOrd(this)">gikk</div>
+                    <div onclick="attendeOrd(this)">løp</div>
+                    <div class="clear" onclick="attendeOrd(this)">jogget</div>
+                    <div onclick="attendeOrd(this)">hoppet</div>
+                    <div class="clear" onclick="attendeOrd(this)">syklet</div>
+                    <div onclick="attendeOrd(this)">rullet</div>`;
+                    
+        visHistorie = `<div onclick="visFramHistorie()">Vis historie</div>`;
+        
+        historie =  `<h2>Det var en gang ${ord1} som het ${ord2}, med ${ord3} ${ord4} 
+                        som skulle ${ord5} til ${ord6}, som ${ord2} ble invitert til av ${ord7}. 
+                        ${ord7} hadde en intensjon på å få ${ord2} sine ${ord4}.<br><br>
+
+                        På vei til ${ord6} så ${ord18} ${ord2} gjennom ${ord8} der ${ord2} 
+                        møtte på ${ord9}, som gjorde at ${ord2} ${ord10} ned i ${ord11}.<br>
+                        Vannet var veldig ${ord12}, som gjorde at ${ord2} sine ${ord4} ble ${ord13}.
+                        ${ord2} ble veldig ${ord14} fordi ${ord2} trodde ${ord7} skulle bli ${ord15}.<br>
+                        Når ${ord2} kom frem til ${ord6} viste det seg at ${ord7} ble ${ord16} fordi ${ord7} 
+                        ${ord17} ${ord13} ${ord4}.</h2>`;
+
+
+        document.getElementById("app").innerHTML = `
+        ${content}
+        `;
+    }
+
+    // Controller - Endrer det som vises i View.
+    show();
+    
+    function visOrdvalg() {
+        content = ordvalg1;
+        show();
+    }
+     
+    function førsteOrd(valgtOrd) {
+        content = ordvalg2;
+        ord1 = valgtOrd.innerHTML;
+        show();
+    }
+    function andreOrd(valgtOrd) {
+        content = ordvalg3;
+        ord2 = valgtOrd.innerHTML;
+        show();
+    }
+    function tredjeOrd(valgtOrd) {
+        content = ordvalg4;
+        ord3 = valgtOrd.innerHTML;
+        show();
+    }
+    function fjerdeOrd(valgtOrd) {
+        content = ordvalg5;
+        ord4 = valgtOrd.innerHTML;
+        show();
+    }
+    function femteOrd(valgtOrd) {
+        content = ordvalg6;
+        ord5 = valgtOrd.innerHTML;
+        show();
+    }
+    function sjetteOrd(valgtOrd) {
+        content = ordvalg7;
+        ord6 = valgtOrd.innerHTML;
+        show();
+    }
+    function syvendeOrd(valgtOrd) {
+        content = ordvalg8;
+        ord7 = valgtOrd.innerHTML;
+        show();
+    }
+    function åttendeOrd(valgtOrd) {
+        content = ordvalg9;
+        ord8 = valgtOrd.innerHTML;
+        show();
+    }
+    function niendeOrd(valgtOrd) {
+        content = ordvalg10;
+        ord9 = valgtOrd.innerHTML;
+        show();
+    }
+    function tiendeOrd(valgtOrd) {
+        content = ordvalg11;
+        ord10 = valgtOrd.innerHTML;
+        show();
+    }
+    function elefteOrd(valgtOrd) {
+        content = ordvalg12;
+        ord11 = valgtOrd.innerHTML;
+        show();
+    }
+    function tolvteOrd(valgtOrd) {
+        content = ordvalg13;
+        ord12 = valgtOrd.innerHTML;
+        show();
+    }
+    function trettendeOrd(valgtOrd) {
+        content = ordvalg14;
+        ord13 = valgtOrd.innerHTML;
+        show();
+    }
+    function fjortendeOrd(valgtOrd) {
+        content = ordvalg15;
+        ord14 = valgtOrd.innerHTML;
+        show();
+    }
+    function femtendeOrd(valgtOrd) {
+        content = ordvalg16;
+        ord15 = valgtOrd.innerHTML;
+        show();
+    }
+    function sekstendeOrd(valgtOrd) {
+        content = ordvalg17;
+        ord16 = valgtOrd.innerHTML;
+        show();
+    }
+    function søttendeOrd(valgtOrd) {
+        content = ordvalg18;
+        ord17 = valgtOrd.innerHTML;
+        show();
+    }
+    function attendeOrd(valgtOrd) {
+        content = visHistorie;
+        ord18 = valgtOrd.innerHTML;
+        
+        show();
+    }
+    function visFramHistorie() {
+        content = historie;
+        show();
+    }
+</script>
+</body>

@@ -1,0 +1,79 @@
+
+Battle of the elements
+
+pokemon elements
+
+
+
+hva må gjøres.
+
+1. Angelica. spiller må kunne velge hvilket element spiller vil ha. (controller)
+    - function som setter variablen valgSpiller til det som ble trykket på. får parameter(nr) inn som parameter.
+
+2. Sindre. randomisering av hvilket element computer skal ha. (controller)
+    - lage et tilfeldig nr fra og med 0 til og med 16 og sette variablen valgCpu til nummeret.
+
+3. Mikael. noe som sjekker hvem som vinner eller om det blir uavgjort. (controller)
+    - sjekk om spiller vinner, eller cpu vinner eller om det ble uavgjort. hvis spiller vinner så plusses 1 på variablen scoreSpiller. - - samme med scoreCpu og uavgjort.
+
+4. Mikael. timer som resetter spillet så spiller får valgt på nytt. (controller)
+    - standard timerfunction.
+
+5. Kristian. updateView() (view) (6. 7.)
+    1. noe som viser fram hva spiller og computer har valgt og hvem som vant eller om det ble uavgjort. (controller)
+        - content = valgHTML, vinnerHTML
+        - updateview
+    2. vise fram score resultatene (controller)
+        - updateView ting
+        - grovt CSS
+
+6. CSS - pynte CSS
+    - tas til slutt felles
+
+7. Linn. måte holde scorecount. (best ut av ?) (controller) 
+    -gjøres av seg selv
+
+
+// model
+
+    content- hva som vises av valgHTML
+    let content
+    let valgHtml
+    let vinnerHtml
+
+    scoreresultatene
+    vises hele tiden
+    let scoreSpiller - hvor mange ganger spiller har vunnet
+    let scoreCpu - hvor mange ganger computer har vunnet
+    let uavgjort - ? hvor mange ganger har det blitt uavgjort
+    let antallRunder - summen av variablene over
+
+    Hvilke elementer som er valgt
+    let valgSpiller - element som spilleren har valgt kodes fra 0 til 16
+    let valgCpu - element som computer valgt kodes fra 0 til 16
+
+
+
+// view
+
+    function updateView() (8.)
+
+// controller
+    function playerChoice()  (1.)
+
+    function cpuChoice()  (2.)
+
+    function checkWinner() (3.)
+
+    function showResults() (4.)
+
+    function gameReset() (5.)
+
+    function controller() {
+        endre viewting;
+        updateView();
+    }
+
+    
+
+
