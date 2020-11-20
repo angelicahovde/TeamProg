@@ -25,7 +25,7 @@
             let morse = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....',
                          '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.',
                          '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-',
-                         '-.--', '--..', ' ', '·−·−', '−−−·', '·−−·−'];
+                         '-.--', '--..', '&nbsp;', '·−·−', '−−−·', '·−−·−'];
             let tekstInput = '';
             let tekstOutput = '';
 
@@ -34,22 +34,32 @@
             function updateView() {
                 document.getElementById('app').innerHTML = `
                 <input id="textField" type="text" oninput="setText()">
-                <button onclick="translate()">Oversett</button>
+                <button onclick="translateText()">Oversett</button>
+                <h3>${tekstOutput}</h3>
                 `;
             }
 
             // Controller
+
+            function dummy() {
+                console.log('dummy');
+            }
             function setText() {
                 tekstInput = document.getElementById('textField').value;
             }
-            function translate() {
-                tekst = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-                         'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-                         'w', 'x', 'y', 'z', ' ', 'æ', 'ø', 'å'];        
+            
+            function translateText() {
+
+                for (let i = 0; i < tekstInput.length; i++) {
+                    let bokstav = tekstInput[i];
+                    let index = tekst.indexOf(bokstav);
+                    let morseBokstav = morse[index];
+                    tekstOutput += morseBokstav + ' ';
+                }
+                updateView();
             }
-
-
         </script>
+
 
     </body>
 
