@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TEAM 3 - MORSE CODE</title>
+
+        <style>
+
+
+            .team {
+                background: url(team3.png) left bottom no-repeat, url(morse.png) top no-repeat;
+                background-size: 800px, 500px;
+                margin-left: 50px, 0px;
+                margin-right: 50px, 0px;
+                background-attachment: fixed;
+            }
+            
+            div.textbox {
+                background-color: #46a546;
+                width: 30vw;
+                height: 10vh;
+                padding: 15px;
+                margin-top: 150px;
+                border-radius: 15px;
+                float: left;
+            }
+            div.textbox:focus {
+                outline: none;
+                box-shadow: 0 0 0 1pt grey;
+            }
+            .translation {
+                background-color: #46a546;
+                width: 30vw;
+                height: 10vh;
+                padding: 15px;
+                margin-top: 150px;
+                border-radius: 15px;
+                float: right;
+            }
+            .translation:focus {
+                outline: none;
+                box-shadow: 0 0 0 1pt grey;
+            }
+            .translateButton {
+                height: 5vh;
+                float:left;
+                margin:70px 33% 5px 33%;
+                /* background-color: #46a546; */
+                /* color: white; */
+                
+                
+            }
+            .changeLanguage {
+               height: 5vh;
+               float: left;
+               clear: left;
+               /* background-color: rgb(70, 165, 70);
+               color: white; */
+            }
+            #container1 {
+                display: flex;
+                justify-content: space-between;
+            }
+            #container2 {
+                margin-top: 100px;
+            }
+        </style>
+
+    </head>
+
+    <body class="team" >
+        <!-- <input id="textField" type="text" placeholder="write text here" oninput="setText()"> -->
+        <div id="app"></div>
+
+        <script>
+
+            // Modell
+            let tekst = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+                'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+                'w', 'x', 'y', 'z', ' ', 'æ', 'ø', 'å'];
+            let morse = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....',
+                '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.',
+                '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-',
+                '-.--', '--..', ' \xa0 ', '·−·−', '−−−·', '·−−·−'];
+            let tekstInput = '';
+            let tekstOutput = '';
+            let translatedToTekst = '';
+            let translateToMorse = true;
+            let morsekodeInput = '';
+            let morseOutput = '';
+
+
+            var msg = new SpeechSynthesisUtterance();
+            var voices = window.speechSynthesis.getVoices();
+            msg.voice = voices[10]; 
+            msg.volume = 1; // From 0 to 1
+            msg.rate = 1; // From 0.1 to 10
+            msg.pitch = 2; // From 0 to 2
+            msg.text = "";
+            msg.lang = 'en';
+            // speechSynthesis.speak(msg);
+
+            // View
+            updateView();
+            function updateView() {
+                if (translateToMorse) {
+                    document.getElementById('app').innerHTML = `
+                    <div id="container1">
+                        <div id="tekstDiv" class="textbox" contenteditable="true" oninput="setText()">write text here</div>
+                        <div id="container2">
+                            <button class="translateButton" onclick="translateText()">Translate</button>
+                            <button class="changeLanguage" onclick="changeTranslation(false)">You are now translating to morsecode.<br> click here to change</button>
+                        </div>
+                        <div class="translation">${tekstOutput}</div>
+                    </div>
+                    `;
+                    setText();
+                }
+                else {
+                    document.getElementById('app').innerHTML = `
+                    <div id="container1">
+                        <div id="tekstDiv" class="textbox" contenteditable="true" oninput="setMorse()">write morsecode here</div>
+                        <div id="container2">
+                            <button class="translateButton" onclick="translateFromMorse()">Translate</button>
+                            <button class="changeLanguage" onclick="changeTranslation(true)">You are now translating from morsecode.<br> click here to change</button>
+                        </div>
+                        <div class="translation">${morseOutput}</div>
+                    </div>
+                    `;
+                    setMorse();
+                }
+            }
+
+            // Controller
+
+            function changeTranslation(ting) {
+                translateToMorse = ting;
+                updateView();
+            }
+            function setText() {
+                tekstInput = document.getElementById('tekstDiv').innerHTML;
+                msg.text = document.getElementById('tekstDiv').innerHTML;
+            }
+            function setMorse() {
+                morsekodeInput = document.getElementById('tekstDiv').innerHTML;
+            }
+
+            function translateText() {
+
+                for (let i = 0; i < tekstInput.length; i++) {
+                    let bokstav = tekstInput[i];
+                    let index = tekst.indexOf(bokstav);
+                    let morseBokstav = morse[index];
+                    tekstOutput += morseBokstav + ' ';
+                }
+                speechSynthesis.speak(msg);
+                updateView();
+            }
+
+            function translateFromMorse() {
+                let morsekodeArray = morsekodeInput.split(' ');
+
+                for (let i = 0; i < morsekodeArray.length; i++) {
+                    let index = morse.indexOf(morsekodeArray[i]);
+                    if (!tekst[index]) {
+                        morseOutput += ' ';
+                    }
+                    else {
+                        morseOutput += tekst[index];
+                    }
+                }
+                msg.text = morseOutput;
+                speechSynthesis.speak(msg);
+                updateView();
+            }
+
+        </script>
+    </body>
+
+</html>
